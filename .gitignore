@@ -1,0 +1,30 @@
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Crash log files
+crash.log
+
+# Exclude any .tfvars files containing sensitive data
+*.tfvars
+
+# Ignore override files as they are usually locally generated
+*.tfoverride
+*.tfplan
+
+# Ignore CLI configuration files
+.terraformrc
+terraform.rc
+
+# Ignore lock files (optional, but recommended to allow lock files only in CI/CD environments)
+*.lock.hcl
+
+# Ignore backup files created by text editors
+*~
+*.swp
+*.bak
+*.backup
+*.tmp
