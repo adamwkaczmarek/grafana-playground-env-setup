@@ -10,9 +10,9 @@ Install before you start :
 ## Env setup
 Go to `./terraform` directory and run following commands :
 
-`terrafrom init`
+`terraform init`
 
-`terrafrom apply`
+`terraform apply`
 
 ## Expose Grafa UI
 
