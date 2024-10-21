@@ -22,7 +22,7 @@ resource "kubernetes_service" "spring_boot_service" {
 resource "kubernetes_service" "prometheus_service" {
   metadata {
     name      = "prometheus-service"
-    namespace = "monitoring"
+    namespace = "playground"
   }
 
   spec {

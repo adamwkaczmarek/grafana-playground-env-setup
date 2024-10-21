@@ -1,7 +1,7 @@
 resource "helm_release" "grafana" {
   name       = "grafana"
   chart      = "grafana"
-  namespace  = "monitoring"
+  namespace  = "playground"
   repository = "https://grafana.github.io/helm-charts" 
 
 #   values = [

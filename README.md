@@ -16,9 +16,9 @@ Go to `./terraform` directory and run following commands :
 
 ## Expose Grafa UI
 
-`kubectl expose service grafana --type=NodePort --target-port=3000 --name=grafana-ext -n monitoring`
+`kubectl expose service grafana --type=NodePort --target-port=3000 --name=grafana-ext -n playground`
 
-`minikube service grafana-ext -n monitoring`
+`minikube service grafana-ext -n playground`
 
 
 ## Helper links
