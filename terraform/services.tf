@@ -37,3 +37,22 @@ resource "kubernetes_service" "prometheus_service" {
     }
   }
 }
+
+resource "kubernetes_service" "loki_service" {
+  metadata {
+    name      = "loki-service"
+    namespace = "playground"
+  }
+
+  spec {
+    selector = {
+      app = "loki-server"
+    }
+
+    port {
+      name       = "http"
+      port       = 3100
+      target_port = 3100
+    }
+  }
+}

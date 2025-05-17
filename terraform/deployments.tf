@@ -91,3 +91,58 @@ resource "kubernetes_deployment" "prometheus_server" {
     }
   }
 }
+
+resource "kubernetes_deployment" "loki" {
+  metadata {
+    name      = "loki-server"
+    namespace = "playground"
+  }  
+  
+  spec {
+    replicas = 1
+
+    selector {
+      match_labels = {
+        app = "loki-server"
+      }
+    }
+
+    template {
+      metadata {
+        labels = {
+          app = "loki-server"
+        }
+      }
+
+      spec {
+        volume {
+          name = "config"
+
+          config_map {
+            name  = "loki-server-conf"
+            default_mode = "0644"
+          }
+        }
+
+        container {
+          name  = "loki"
+          image = "grafana/loki:latest"
+
+
+          args = [
+            "-config.file=/etc/loki/loki.yaml"
+          ]
+
+          port {
+            container_port = 3100
+          }
+
+          volume_mount {
+            name       = "config"
+            mount_path = "/etc/loki"
+          }
+        }
+      }
+    }
+  }
+}
