@@ -1,7 +1,7 @@
 resource "kubernetes_deployment" "spring_boot_app" {
   metadata {
     name = "spring-boot-app"
-    namespace = "playground"
+    namespace = kubernetes_namespace.playground.metadata[0].name
     labels = {
       app = "spring-boot-app"
     }
@@ -45,7 +45,7 @@ resource "kubernetes_deployment" "spring_boot_app" {
 resource "kubernetes_deployment" "prometheus_server" {
   metadata {
     name      = "prometheus-server"
-    namespace = "playground"
+    namespace = kubernetes_namespace.playground.metadata[0].name
   }
 
   spec {
@@ -90,12 +90,14 @@ resource "kubernetes_deployment" "prometheus_server" {
       }
     }
   }
+
+  depends_on = [kubernetes_config_map.prometheus_server_conf]
 }
 
 resource "kubernetes_deployment" "loki" {
   metadata {
     name      = "loki-server"
-    namespace = "playground"
+    namespace = kubernetes_namespace.playground.metadata[0].name
   }  
   
   spec {
@@ -130,7 +132,7 @@ resource "kubernetes_deployment" "loki" {
 
 
           args = [
-            "-config.file=/etc/loki/loki.yaml"
+            "-config.file=/etc/loki/loki.yml"
           ]
 
           port {
@@ -145,4 +147,6 @@ resource "kubernetes_deployment" "loki" {
       }
     }
   }
+
+  depends_on = [kubernetes_config_map.loki_server_conf]
 }

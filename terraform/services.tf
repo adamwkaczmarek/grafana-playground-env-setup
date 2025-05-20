@@ -1,7 +1,7 @@
 resource "kubernetes_service" "spring_boot_service" {
   metadata {
     name = "spring-boot-service"
-    namespace = "playground"
+    namespace = kubernetes_namespace.playground.metadata[0].name
   }
 
   spec {
@@ -22,7 +22,7 @@ resource "kubernetes_service" "spring_boot_service" {
 resource "kubernetes_service" "prometheus_service" {
   metadata {
     name      = "prometheus-service"
-    namespace = "playground"
+    namespace = kubernetes_namespace.playground.metadata[0].name
   }
 
   spec {
@@ -41,7 +41,7 @@ resource "kubernetes_service" "prometheus_service" {
 resource "kubernetes_service" "loki_service" {
   metadata {
     name      = "loki-service"
-    namespace = "playground"
+    namespace = kubernetes_namespace.playground.metadata[0].name
   }
 
   spec {
@@ -56,3 +56,15 @@ resource "kubernetes_service" "loki_service" {
     }
   }
 }
+
+# resource "kubernetes_service_account" "promtail" {
+#   metadata {
+#     name      = "promtail"
+#     namespace = "playground"
+#
+#     annotations = {
+#       "terraform.io/disable-service-account-secret-creation" = "true"
+#     }
+#   }
+#   automount_service_account_token = false
+# }
