@@ -7,18 +7,14 @@ Install before you start :
 - [helm](https://helm.sh/docs/intro/install/)
 - [terafrom](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
 
-## Env setup
-Go to `./terraform` directory and run following commands :
+## Env setup - deployment
+In main folder run following command :
 
-`terraform init`
+`./deploy.sh`
 
-`terraform apply`
+To remove :
 
-## Expose Grafa UI
-
-`kubectl expose service grafana --type=NodePort --target-port=3000 --name=grafana-ext -n playground`
-
-`minikube service grafana-ext -n playground`
+`./destroy.sh`
 
 
 ## Helper links

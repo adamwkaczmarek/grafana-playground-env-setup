@@ -4,14 +4,14 @@ resource "helm_release" "grafana" {
   namespace  = "playground"
   repository = "https://grafana.github.io/helm-charts" 
 
-#   values = [
-#     file("values.yaml") # Optional: Specify custom values if you want to override the defaults
-#   ]
+  values = [
+    file("configs/grafana.yml") # Optional: Specify custom values if you want to override the defaults
+  ]
 
-  set {
-    name  = "adminPassword"
-    value = "admin"  # Set the Grafana admin password
-  }
+  # set {
+  #   name  = "adminPassword"
+  #   value = "admin"  # Set the Grafana admin password
+  # }
 
 #   set {
 #     name  = "service.type"
