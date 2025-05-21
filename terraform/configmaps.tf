@@ -5,7 +5,7 @@ resource "kubernetes_config_map" "prometheus_server_conf" {
   }
 
   data = {
-    "prometheus.yml" = file("${path.module}/prometheus.yml") 
+    "prometheus.yml" = file("${path.module}/configs/prometheus.yml")
     }
 }
 
@@ -16,7 +16,7 @@ resource "kubernetes_config_map" "loki_server_conf" {
   }
 
   data = {
-    "loki.yml" = file("${path.module}/loki.yml")
+    "loki.yml" = file("${path.module}/configs/loki.yml")
     }
     
 }
@@ -28,6 +28,6 @@ resource "kubernetes_config_map" "promtail_conf" {
   }
 
   data = {
-    "promtail.yml" = file("${path.module}/promtail.yml")
+    "promtail.yml" = file("${path.module}/configs/promtail.yml")
   }
 }

@@ -8,7 +8,7 @@ resource "kubernetes_service" "spring_boot_service" {
     port {
       protocol    = "TCP"
       port        = 80
-      target_port = "8080"
+      target_port = 8080
     }
 
     selector = {
@@ -29,7 +29,7 @@ resource "kubernetes_service" "prometheus_service" {
     port {
       protocol    = "TCP"
       port        = 80
-      target_port = "9090"
+      target_port = 9090
     }
 
     selector = {
@@ -51,20 +51,8 @@ resource "kubernetes_service" "loki_service" {
 
     port {
       name       = "http"
-      port       = 3100
+      port       = 80
       target_port = 3100
     }
   }
 }
-
-# resource "kubernetes_service_account" "promtail" {
-#   metadata {
-#     name      = "promtail"
-#     namespace = "playground"
-#
-#     annotations = {
-#       "terraform.io/disable-service-account-secret-creation" = "true"
-#     }
-#   }
-#   automount_service_account_token = false
-# }
