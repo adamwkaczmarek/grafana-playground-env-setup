@@ -7,14 +7,14 @@ Install before you start :
 - [helm](https://helm.sh/docs/intro/install/)
 - [terafrom](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
 
-## Env setup - deployment
-In main folder run following command :
+## Local env setup
+To run full operational local env use following command (in the main folder) :
 
-`./deploy.sh`
+`./run-local.sh`
 
-To remove :
+To stop:
 
-`./destroy.sh`
+`./stop-local.sh`
 
 
 ## Helper links
