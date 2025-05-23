@@ -16,6 +16,7 @@ if [ "$STATUS" == "Running" ]; then
 else
   echo "🚀 Starting Minikube..."
   minikube start
+  minikube addons enable ingress
 fi
 
 ./deploy.sh

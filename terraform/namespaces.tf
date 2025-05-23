@@ -4,8 +4,8 @@ resource "kubernetes_namespace" "playground" {
   }
 }
 
-# resource "kubernetes_namespace" "monitoring" {
-#   metadata {
-#     name = "monitoring"
-#   }
-# }
+resource "kubernetes_namespace" "monitoring" {
+  metadata {
+    name = "monitoring"
+  }
+}

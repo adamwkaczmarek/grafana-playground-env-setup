@@ -1,30 +1,10 @@
-resource "helm_release" "grafana" {
-  name       = "grafana"
-  chart      = "grafana"
-  namespace  = "playground"
-  repository = "https://grafana.github.io/helm-charts" 
+resource "helm_release" "grafana_loki_stack" {
+  name       = "gls"
+  namespace  = kubernetes_namespace.monitoring.metadata[0].name
+  repository = "https://grafana.github.io/helm-charts"
+  chart      = "loki-stack"
 
   values = [
-    file("configs/grafana.yml") # Optional: Specify custom values if you want to override the defaults
+    file("${path.module}/configs/grafana-loki-stack-values.yml")
   ]
-
-  # set {
-  #   name  = "adminPassword"
-  #   value = "admin"  # Set the Grafana admin password
-  # }
-
-#   set {
-#     name  = "service.type"
-#     value = "ClusterIP"  # Can also be LoadBalancer or NodePort based on your needs
-#   }
-
-#   set {
-#     name  = "persistence.enabled"
-#     value = "true"  # Enable persistence for Grafana data
-#   }
-
-#   set {
-#     name  = "persistence.size"
-#     value = "10Gi"  # Specify the storage size
-#   }
 }
