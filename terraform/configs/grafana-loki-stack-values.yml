@@ -1,0 +1,25 @@
+grafana:
+  enabled: true
+  adminPassword: "admin"
+  service:
+    type: NodePort
+  ingress:
+    enabled: false
+#  image:
+#    tag: 11.6.2
+
+prometheus:
+  enabled: true
+
+promtail:
+  enabled: true
+  config:
+    logLevel: info
+    serverPort: 3101
+    clients:
+      - url: http://gls-loki:3100/loki/api/v1/push
+
+loki:
+  enabled: true
+  isDefault: true
+

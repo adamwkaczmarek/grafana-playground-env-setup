@@ -10,6 +10,8 @@ Terraform configuration to deploy:
  - Preconfigured data sources in Grafana (Prometheus & Loki)
  - Example spring-boot app
 
+Comment:  To simplify deployment [Loki Stack Helm Chart](https://github.com/grafana/helm-charts/blob/main/charts/loki-stack/README.md) has been used 
+
 Automation scripts to:
  - Check and start Minikube if it's not running
  - Deploy the full monitoring stack locally
@@ -34,11 +36,6 @@ Install before you start :
 - Minimal dependencies: just Terraform, Minikube, and Helm
 
 ## 🔗Helper links
-- https://vaibhavji.medium.com/deploying-prometheus-and-grafana-for-observability-on-a-minikube-cluster-using-daemonset-266e2df7e454
-- https://github.com/sl1pm4t/k2tf?tab=readme-ov-file
-- https://github.com/adecchi/terraform-minikube
-- https://vaibhavji.medium.com/deploy-kubernetes-resources-in-minikube-cluster-using-terraform-8dde6dd72bc4
-
 
 
 
