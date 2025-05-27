@@ -1,9 +1,9 @@
 resource "kubernetes_deployment" "spring_boot_app" {
   metadata {
-    name = "spring-boot-app"
+    name      = "spring-boot-app"
     namespace = kubernetes_namespace.playground.metadata[0].name
     labels = {
-      app = "spring-boot-app"
+      app             = "spring-boot-app"
     }
   }
 
@@ -21,8 +21,13 @@ resource "kubernetes_deployment" "spring_boot_app" {
         labels = {
           app = "spring-boot-app"
         }
+        annotations = {
+          "prometheus.io/scrape" = "true"
+          "prometheus.io/port"   = "8080"
+          "prometheus.io/path"   = "/actuator/prometheus"
+          "prometheus.io/scheme" = "http"
+        }
       }
-
       spec {
         container {
           name  = "spring-boot-container"
