@@ -4,7 +4,7 @@ provider "kubernetes" {
 }
 
 provider "helm" {
-  kubernetes {
+  kubernetes = {
     config_path = "~/.kube/config"  # Ensure this is pointing to your kubeconfig file
   }
 }
